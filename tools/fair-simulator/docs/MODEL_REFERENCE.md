@@ -55,21 +55,20 @@ Let's use the median values as the intuitive explanation; the simulation uses fu
 
 - **Median LEF:**
 
-$
-\text{LEF}_{50} = \text{TEF}_{50} \times \frac{\text{Susceptibility}_{50}}{100}
-$
+$$
+\text{LEF}_{50} = \text{TEF}_{50} \times \frac{\text{Susceptibility}_{50}}{100}$$
 
 - **In the Monte Carlo engine**, for each simulation \( i \):
 
-$
-\text{LEF}_i = \text{TEF}_i \times \frac{\text{Susceptibility}_i}{100}$
+$$
+\text{LEF}_i = \text{TEF}_i \times \frac{\text{Susceptibility}_i}{100}$$
 
 Where:
 
-- $ \text{TEF}_i \ge 0 $
-- $ 0 \le \text{Susceptibility}_i \le 100 $
+- $\text{TEF}_i \ge 0$
+- $0 \le \text{Susceptibility}_i \le 100$
 
-This guarantees $ \text{LEF}_i \ge 0 $.
+This guarantees $\text{LEF}_i \ge 0$.
 
 ---
 
@@ -79,27 +78,27 @@ Per loss event, we compute:
 
 - **Primary loss** (always evaluated for each event):
 
-$
+$$
 \text{Primary}_i = 
   \text{Productivity}_i +
   \text{Response}_i +
   \text{Replacement}_i
-$
+$$
 
 - **Secondary loss** (only realized when secondary losses occur):
 
-$
+$$
 \text{Secondary}_i =
   \text{Fines}_i +
   \text{CompetitiveAdv}_i +
   \text{Reputation}_i
-$
+$$
 
 All loss-form samples are by construction **non-negative**:
 
-$
+$$
 \text{Productivity}_i, \dots, \text{Reputation}_i \ge 0
-$
+$$
 
 ---
 
@@ -109,26 +108,26 @@ SLEF is the **conditional probability** that secondary loss occurs, given that t
 
 We sample SLEF as a percentage:
 
-$
+$$
 0 \le \text{SLEF}_i \le 100
-$
+$$
 
 Then convert to a probability:
 
-$
+$$
 p_{\text{SLEF}, i} = \frac{\text{SLEF}_i}{100}
-$
+$$
 
 The effective Single Loss Event Exposure (i.e. LM per event) is:
 
-$
+$$
 \text{LM}_i = \text{Primary}_i + \text{Secondary}_i \times p_{\text{SLEF}, i}
-$
+$$
 
 Special cases:
 
 - If **SLEF = 0**  
-  then $ p_{\text{SLEF}, i} = 0 $  
+  then $p_{\text{SLEF}, i} = 0$  
   and secondary terms drop out; only Primary contributes.
 - If **there are no secondary losses** (all fines/competitive/reputation medians are zero), SLEF is not required and may be set to 0.
 
@@ -140,9 +139,9 @@ Because SLEF is conditional on the primary event and bounded in $[0,100]\%$, it 
 
 For each simulation $ i $:
 
-$
+$$
 \text{ALE}_i = \text{LEF}_i \times \text{LM}_i
-$
+$$
 
 - Units: `(events/year) × (currency/event) = currency/year`
 - Non-negativity: both factors are non-negative, so ALE is non-negative.
@@ -168,7 +167,7 @@ From the sampled ALE distribution we then compute summary statistics:
 
 - Modeled via Beta-PERT on the range [0, 100].
 - Inputs: P10, P50, P90 with:
-  - $ 0 \le \text{P10} \le \text{P50} \le \text{P90} \le 100 $
+  - $0 \le \text{P10} \le \text{P50} \le \text{P90} \le 100$
 - These constraints guarantee that probabilities remain within valid bounds.
 
 ### 3.3 Loss Forms
@@ -207,4 +206,4 @@ The model is versioned at the math/engine level. Examples of changes:
 - **v0.3** – Added zero-inflated loss forms when P10 = 0; clarified LM vs SLEE naming.
 - **v0.4** – Documented constraints; added unit tests for SLEF and Susceptibility edge cases.
 
-Future changes to the math will be recorded here so users can see how the risk engine evolved.
+Future changes to the math will be recorded here.
