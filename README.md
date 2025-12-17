@@ -24,7 +24,7 @@ with industry benchmarks.
 
 **License:** CC BY-NC-SA 4.0 (Non-Commercial Use Only)
 
-[Read More](tools/fair-simulator/README.md) | [Quick Start](tools/fair-simulator/docs/getting-started.md)
+[Read More](tools/fair-simulator/README.md) | [Setup](tools/fair-simulator/SETUP.md)
 
 ## Licensing
 
