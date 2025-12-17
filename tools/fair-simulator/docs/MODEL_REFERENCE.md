@@ -5,7 +5,7 @@ The goal is **transparency**: no hidden scores, no opaque multipliers.
 
 ---
 
-## 1. Core Variables & Units
+## 1. Core Variables and Units
 
 All calculations are built from three main parts:
 
