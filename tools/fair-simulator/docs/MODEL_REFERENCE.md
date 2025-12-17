@@ -137,7 +137,7 @@ Because SLEF is conditional on the primary event and bounded in $[0,100]\%$, it 
 
 ### 2.4 From LEF and LM to ALE
 
-For each simulation $ i $:
+For each simulation $i$:
 
 $$
 \text{ALE}_i = \text{LEF}_i \times \text{LM}_i
